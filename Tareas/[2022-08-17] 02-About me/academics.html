@@ -31,39 +31,57 @@
                 <br/>
                 Luego, desde octavo hasta mi graduación de bachillerato general, estudié en el Instituto Hermanas Somascas, colegio que terminó de formarme en mis estudios y mi forma de pensar. Durante noveno y mi primer año de bachillerato fui parte del equipo de volleyball. Además, en mi primer año de bachillerato recibí un reconocimiento por parte de la Alcaldía de Antiguo Cuscatlán como Excelencia Académica Nacional.
 
+                <!-- Videos sobre experimentos de química -->
                 <article>
                     <h3>¿Cómo descubrí a lo que me quería dedicar?</h3>
                     <p>
-                        En mis años de colegio siempre estuve muy interesada en todo lo relacionado a las matemáticas y la ciencia, en especial con química. Tanto así que en los proyectos de feria de ciencia, todos estaban dedicados a la química. Te dejo un video en el que puedes ver uno de los experimentos que realicé en mis proyectos: 
+                        En mis años de colegio siempre estuve muy interesada en todo lo relacionado a las matemáticas y la ciencia, en especial con química. Tanto así que en los proyectos de las ferias de ciencia, todos estaban dedicados a la química. Te dejo unos videos en los que puedes ver algunos experimentos que realicé en mis proyectos: 
                     </p>
                     <table>
                         <tr>
+                            <th>Permanganato de potasio con agua oxigenada al 30%</th>
+                            <th>Magnesio con hielo seco</th>
+                        </tr>
+                        <tr>
                             <th>
-                                <video controls width="145px">
+                                <video controls width="145px" alt="Reacción química de permanganato de potasio con agua oxigenada al 30%">
                                     <source src="./assets/video/experiment1.mp4"/>
                                 </video>
                             </th>
                             <th>
-                                <video controls width="300px">
+                                <video controls width="300px" alt="Reacción química de magnesio con hielo seco">
                                     <source src="./assets/video/experiment2.mp4"/>
                                 </video>
                             </th>
                         </tr>
                     </table>
+                    <p>
+                        Al final de cuentas, ¿por qué terminé eligiendo informática si me llamaba tanto la atención la química? Pues, durante la pandemia descubrí en pequeños cursos de internet lo divertido que era programar y utilizar la lógica para resolver problemas, arbitrarios pero retadores. Esto me animó a bsucar más sobre la carrera y me terminó gustando por su aplicabilidad en la actualidad.
+                        <br>
+                        Claro está que mi pasión por otras ciencias sigue ahí, por lo cual en un futuro quiero aplicar mis conocimientos de computación en otros campos como la neurociencia o la inteligencia artificial. Pero todavía hace falta mucho tiempo para eso.
+                    </p>
                 </article>
             </p>
         </section>
 
         <!-- Educación superior -->
         <section id="universidad">
-
+            <h2>Educación superior</h2>
+            <p>En la actualidad me encuentro en mi segundo año de universidad, estudiando Ingeniería Informática en la Universidad Centroamericana "José Simeón Cañas". Aún me hace falta camino por recorrer para poder entender a profundidad lo que hago como profesional y todo lo que el mundo de la informática tiene por ofrecer, pero en lo que voy aprendiendo me voy divirtiendo en el proceso, aunque a veces es demasiado cansado.</p>
+            <p>Tengo que reconocer que en estos dos años me siento agradecida por las personas que he conocido y lo logros que he tenido.</p>
+            <table>
+                <tr>
+                    <th><img src="./assets/img/friends.jpg" width="300px"/></th>
+                    <th><img src="./assets/img/team.jpg" width="275px"/></th>
+                </tr>
+            </table>
         </section>
 
         <!-- Sección de comentarios -->
         <section id="comentarios">
             <div class="form">
                 <h2>Comentarios</h2>
-                <form action="./academics.html" method="post">
+                <form action="#./academics.html" method="post">
                     <!-- Datos personales -->
                     <fieldset>
                         <legend>Datos personales</legend>
@@ -73,7 +91,7 @@
                         </label>
                         <label>
                             Correo electrónico:
-                            <input type="text" name="email" placeholder="Tu correo electrónico aquí"/>
+                            <input type="text" name="email" placeholder="Tu correo electrónico aquí" id="email-address"/>
                         </label>
                         <br><br>
                         <label>
@@ -81,13 +99,30 @@
                             <input type="number" name="age" placeholder="Tu edad aquí"/>
                         </label>
                     </fieldset>
+
                     <!-- Sección de comentarios -->
                     <fieldset>
                         <legend>Comentarios y sugerencias</legend>
                         <label>
                             Comentarios:
-                            <textarea></textarea>
+                            <textarea name="comments"></textarea>
                         </label>
+                        <div>
+                            <p>¿Cómo calificas este trabajo?</p>
+                            <label>
+                                Malo
+                                <input type="radio" name="rate" value="bad">
+                            </label>
+                            <label>
+                                Bueno
+                                <input type="radio" name="rate" value="good">
+                            </label>
+                            <label>
+                                Excelente
+                                <input type="radio" name="rate" value="excellent">
+                            </label>
+                        <!-- Submit button -->
+                        </div>
                         <br><br>
                         <input type="submit"/>
                     </fieldset>
