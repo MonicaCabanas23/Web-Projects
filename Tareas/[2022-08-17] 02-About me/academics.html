@@ -12,13 +12,105 @@
         <img src="./assets/img/me.jpg" alt="Foto de Mónica Cabañas" width="150px"/>
         <nav>
             <ul>
+                <li><a href="#primaria"> Educación básica y media</a></li>
+                <li><a href="#universidad">Educación superior</a></li>
+                <li><a href="#comentarios">Comentarios</a></li>
+                <li><a href="#relacionadas">Páginas que tal vez te interesen</a></li>
+                <li><a href="#contacto">¡Contáctame!</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Educación primaria y básica -->
+        <section id="primaria">
+            <h2>Educación básica y media</h2>
+            <p>
+                Empecé a estudiar en el Colegio San Francisco desde kinder hasta segundo grado, luego de eso nuestros padres nos cambiaron a mi hermano y a mi al Centro Educativo Denver donde estudiamos desde tercer grado hasta séptimo grado. 
+                En todos esos años destaqué mayormente por las buenas notas y mi participación en deportes, siendo parte del equipo de básquetbol durante cuarto grado, y luego el equipo de natación durante sexto y séptimo grado.
+                <br/>
+                Luego, desde octavo hasta mi graduación de bachillerato general, estudié en el Instituto Hermanas Somascas, colegio que terminó de formarme en mis estudios y mi forma de pensar. Durante noveno y mi primer año de bachillerato fui parte del equipo de volleyball. Además, en mi primer año de bachillerato recibí un reconocimiento por parte de la Alcaldía de Antiguo Cuscatlán como Excelencia Académica Nacional.
+
+                <article>
+                    <h3>¿Cómo descubrí a lo que me quería dedicar?</h3>
+                    <p>
+                        En mis años de colegio siempre estuve muy interesada en todo lo relacionado a las matemáticas y la ciencia, en especial con química. Tanto así que en los proyectos de feria de ciencia, todos estaban dedicados a la química. Te dejo un video en el que puedes ver uno de los experimentos que realicé en mis proyectos: 
+                    </p>
+                    <table>
+                        <tr>
+                            <th>
+                                <video controls width="145px">
+                                    <source src="./assets/video/experiment1.mp4"/>
+                                </video>
+                            </th>
+                            <th>
+                                <video controls width="300px">
+                                    <source src="./assets/video/experiment2.mp4"/>
+                                </video>
+                            </th>
+                        </tr>
+                    </table>
+                </article>
+            </p>
+        </section>
+
+        <!-- Educación superior -->
+        <section id="universidad">
+
+        </section>
+
+        <!-- Sección de comentarios -->
+        <section id="comentarios">
+            <div class="form">
+                <h2>Comentarios</h2>
+                <form action="./academics.html" method="post">
+                    <!-- Datos personales -->
+                    <fieldset>
+                        <legend>Datos personales</legend>
+                        <label>
+                            Nombre:
+                            <input type="text" name="username" placeholder="Tu nombre aquí"/>
+                        </label>
+                        <label>
+                            Correo electrónico:
+                            <input type="text" name="email" placeholder="Tu correo electrónico aquí"/>
+                        </label>
+                        <br><br>
+                        <label>
+                            Edad:
+                            <input type="number" name="age" placeholder="Tu edad aquí"/>
+                        </label>
+                    </fieldset>
+                    <!-- Sección de comentarios -->
+                    <fieldset>
+                        <legend>Comentarios y sugerencias</legend>
+                        <label>
+                            Comentarios:
+                            <textarea></textarea>
+                        </label>
+                        <br><br>
+                        <input type="submit"/>
+                    </fieldset>
+                </form>
+            </div>
+        </section>
+
+        <!-- Navegación a otras páginas -->
+        <section id="relacionadas">
+            <h2>Navega a otras páginas</h2>
+            <ul>
                 <li><a href="./index.html">Datos generales</a></li>
                 <li><a href="./hobbies.html">Pasatiempos</a></li>
                 <li><a href="./academics.html">Vida Académica</a></li>
             </ul>
-        </nav>
-    </header>
-    <footer style="background-color:coral">
+        </section>
+    </main>
+
+    <footer style="background-color:coral" id="contacto">
+        <!-- Redes sociales y más -->
+        <h3>¡Contáctame!</h3>
+        <p>Contáctame por correo electrónico:</p>
+        <p><a href="mailto:00079921@uca.edu.sv">00079921@uca.edu.sv</a></p>
         <p>Puedes contactarme en mis redes sociales:</p>
         <ul>
             <li><a href="https://www.instagram.com/mogabriela_23/">Instagram</a></li>
