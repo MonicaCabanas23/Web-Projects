@@ -1,0 +1,23 @@
+:root {
+    box-sizing: border-box;
+  }
+  
+  *, *::before, *::after {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+  }
+
+  .box {
+    width: 100px;
+    height: 100px;
+    padding: 10px;
+    margin: 10px;
+    border: 0.1rem solid black;
+    border-radius: 2rem 2rem;
+  }
+
+  #flexbox-content {
+    display: flex;
+    flex-wrap: wrap;
+  }
