@@ -9,15 +9,52 @@
   }
 
   .box {
-    width: 100px;
-    height: 100px;
+    width: 500px;
+    height: auto;
     padding: 10px;
     margin: 10px;
-    border: 0.1rem solid black;
+
     border-radius: 2rem 2rem;
+
+    box-shadow: 0 0 10px;
+    max-width: 10rem;
+
+    display: flex;
+    flex-direction: column;
+    align-self: normal;
+    justify-content: space-between;
+    align-items: center;
   }
 
-  #flexbox-content {
+  .parent-flex {
     display: flex;
+
+    justify-content: center;
     flex-wrap: wrap;
+  
+    gap: 0.1rem;
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: center;
+  }
+
+  .buttons > button {
+    margin: 1vh;
+    padding: 2px;
+  }
+
+  .accept {
+    color: azure;
+    background: crimson;
+    border: 0rem;
+    border-radius: 0 0.3rem;
+  }
+
+  .cancel {
+    color: azure;
+    background: green;
+    border: 0rem;
+    border-radius: 0 0.3rem;
   }
