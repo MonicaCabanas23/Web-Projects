@@ -9,6 +9,7 @@
     padding: 0; 
 }
 
+/* Setting up the body */
 body {
     display: flex;
     flex-flow: column nowrap;
@@ -16,19 +17,100 @@ body {
     align-items: center;
 
     min-height: 100vh;
-    background: #8b9fa0;
+    background: #1F82FF;
 }
 
 .card {
    padding: 3rem;  
    width: 300px;
 
-   background: #e8be9b;
+   background: #A4F5EE;
    border-radius: 1.5rem;
    box-shadow: 0 0 0.5rem;
+
+   position: relative;
 }
 
 .card > p {
     text-align: justify;
 }
 
+.icon-container {
+    width: 3rem;
+    height: 3rem;
+}
+
+.icon {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto auto auto;
+
+    grid-template-areas: "first-item first-item second-item"
+                         "fourth-item centered-item second-item"
+                         "fourth-item third-item third-item";
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Items inside the icon */
+.box.first-item {
+    background: #1BB3DE;
+    grid-area: first-item;
+
+    border-top-left-radius: 0.5rem;
+}
+
+.box.second-item {
+    background: #2AF5D9;
+    grid-area: second-item;
+    
+    border-top-right-radius: 0.5rem;
+}
+
+.box.third-item {
+    background: #1BDE7C;
+    grid-area: third-item;
+
+    border-bottom-right-radius: 0.5rem;
+}
+
+.box.fourth-item {
+    background: #16FA35;
+    grid-area: fourth-item;
+
+    border-bottom-left-radius: 0.5rem;
+}
+
+.box.centered-item {
+    background: white;
+    grid-area: centered-item;
+}
+
+/* Several icons inside the card */
+.icon-container#first-icon {
+    position: absolute;
+    top: -0.5rem;
+    left: -0.5rem;
+}
+
+.icon-container#second-icon {
+    position: absolute;
+    top: -0.5rem;
+    right: -0.5rem;
+    transform: rotate(90deg);
+}
+
+.icon-container#third-icon {
+    position: absolute;
+    bottom: -0.5rem;
+    left: -0.5rem;
+    transform: rotate(180deg);
+}
+
+.icon-container#fourth-icon {
+    position: absolute;
+    bottom: -0.5rem;
+    right: -0.5rem;
+    transform: rotate(360deg);
+}
