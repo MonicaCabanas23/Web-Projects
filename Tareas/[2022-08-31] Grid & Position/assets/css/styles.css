@@ -17,7 +17,7 @@ body {
     align-items: center;
 
     min-height: 100vh;
-    background: #1F82FF;
+    background: rgb(237, 229, 229);
 }
 
 .card {
