@@ -1,2 +1,8 @@
-@import url("./base/reset.scss");
+@import "./mixins";
 
+@import "./base/reset.scss";
+
+@import "./base/page.scss";
+
+@import "./layouts/header";
+@import "./layouts/main";

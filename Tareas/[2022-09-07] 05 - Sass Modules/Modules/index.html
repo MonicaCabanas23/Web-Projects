@@ -4,18 +4,46 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="./assets/css/style.css">
+
     <title>Sass Modules</title>
 </head>
 <body>
     <header>
-        <nav></nav>
+        <h2 class="titles">snap</h2>
+        <nav>
+            <div id="principal-menu">
+                <ul>
+                    <li>Features</li>
+                    <li>Company</li>
+                    <li>Careers</li>
+                    <li>About</li>
+                </ul>
+            </div>
+            <div id="login-menu">
+                <ul>
+                    <li>Login</li>
+                    <li><button>Register</button></li>
+                </ul>
+            </div>
+        </nav>
     </header>
     <main>
-        <h1>Make remote work</h1>
+        <div id="text">
+            <h1 class="titles">Make remote work</h1>
+            <p>Get your team in sync, no matter your location. Streamline processes, create team rituals, and watch productivity soar.</p>
+            <button>Learn more</button>
+            <figure id="sponsors">
+                <img src="./assets/img/reto-sass2.png" alt="sponsors">
+            </figure>
+        </div>
 
-        <p>Get your team in sync, no matter your location. Streamline processes, create team rituals, and watch productivity soar.</p>
-        
-        <button>Learn more</button>
+        <figure id="main-image">
+            <img src="./assets/img/reto-sass.png" alt="decorative-image"/>
+        </figure>
     </main>
 </body>
 </html>
+
+<!-- 1fr o 100vw -->
