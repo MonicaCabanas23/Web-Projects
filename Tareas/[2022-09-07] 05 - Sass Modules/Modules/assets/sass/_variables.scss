@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
+
+$theme-text-font: "Roboto", sans-serif; 
+$theme-boder-radius: 0.5rem 0.5rem; 
+$theme-boder: 1px solid black; 
+$theme-background-color: #242124; 
+
+.title {
+    font-family: $theme-text-font;
+    font-size: 30px;
+    font-weight: bolder;
+    color: $theme-background-color;
+}
+
+.btn {
+    padding: 5px;
+    border: $theme-boder;
+    border-radius: $theme-boder-radius;
+}

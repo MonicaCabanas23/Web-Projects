@@ -5,6 +5,9 @@ header {
     grid-area: header;
     @include flex(row);
     justify-content: space-between;
+    align-items: center;
+
+    font-family: $theme-text-font;
 
     nav {
         @include flex(row); 

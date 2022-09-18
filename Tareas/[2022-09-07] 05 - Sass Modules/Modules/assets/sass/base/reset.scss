@@ -9,6 +9,9 @@
 
 *, *::after, *::before {
     box-sizing: inherit;
+
+	font-family: $theme-text-font;
+	font-weight: 500;
 }
 
 html, body, div, span, applet, object, iframe,

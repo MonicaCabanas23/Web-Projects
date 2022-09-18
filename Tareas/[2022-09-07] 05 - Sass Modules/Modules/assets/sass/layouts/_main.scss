@@ -6,18 +6,30 @@ main {
         padding: 4rem; 
         @include flex(column);
         justify-content: space-around;
+        flex-grow: 1;
+
+        .title {
+            font-size: 60px;
+        }
     }
 
-    figure {
+    figure{
         position: relative;
+        min-width: 50px;
+        min-height: 50px;
         width: auto;
         height: auto;
+
+        > img{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            object-fit: contain;
+        }
     }
 
-    figure > img{
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        object-fit: contain;
+    .btn {
+        background: $theme-background-color;
+        color: antiquewhite;
     }
 }
