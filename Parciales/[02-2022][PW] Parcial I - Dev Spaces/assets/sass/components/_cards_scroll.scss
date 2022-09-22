@@ -1,0 +1,141 @@
+section#tweets-section{
+    
+    padding-left: 3rem;
+    .container{
+        padding: 1rem;
+        @include flex(row, false);
+        height: 22rem;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        position: relative;
+        .tweet-card{
+
+            box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6);
+            @include flex(column);
+            padding: 1rem;
+            flex: 0 0 25%;
+            border-radius: 1rem;
+            background-color: $background-color;
+            border-top: 0.5rem solid $color-accent;
+            p{
+                overflow-y: scroll;
+                overflow-x: hidden;
+                text-align: justify;
+                line-height: 1rem;
+                font-family: $theme-text-roboto;
+                color:$text-color;
+
+                &::-webkit-scrollbar {
+                    -webkit-appearance: none;
+                }
+                
+                &::-webkit-scrollbar:vertical {
+                    width:10px;
+                }
+                
+                &::-webkit-scrollbar-button:increment,&::-webkit-scrollbar-button {
+                    display: none;
+                } 
+                
+                &::-webkit-scrollbar:horizontal {
+                    height: 10px;
+                }
+                
+                &::-webkit-scrollbar-thumb {
+                    background-color: #797979;
+                    border-radius: 20px;
+                    border: 2px solid #f1f2f3;
+                }
+                
+                &::-webkit-scrollbar-track {
+                    border-radius: 10px;  
+                }
+            
+            }
+            .user-info{
+                @include flex(row, false);
+                justify-content: flex-end;
+                justify-items: flex-end;
+                gap: 0.4rem;
+                figure{
+                    border-radius: 50%;
+                    height: 3rem;
+                    width: 3rem;
+                }
+                .user-data{
+                    font-family: $theme-text-montserrat;
+                    padding-top: .5rem;
+                    top: -10%;
+                    font-size: 1rem;
+                    font-weight: 600;
+                    text-align: end;
+                    height: 100%;
+                    p{
+                        font-size: 0.8rem;
+                        padding-top: .2rem;
+                        font-weight: 100;
+                    }
+                }
+            }
+        }
+        
+        &::-webkit-scrollbar {
+            -webkit-appearance: none;
+        }
+        
+        &::-webkit-scrollbar:vertical {
+            width:10px;
+        }
+        
+        &::-webkit-scrollbar-button:increment,&::-webkit-scrollbar-button {
+            display: none;
+        } 
+        
+        &::-webkit-scrollbar:horizontal {
+            height: 10px;
+        }
+        
+        &::-webkit-scrollbar-thumb {
+            background-color: #797979;
+            border-radius: 20px;
+            border: 2px solid #f1f2f3;
+        }
+        
+        &::-webkit-scrollbar-track {
+            border-radius: 10px;  
+        }
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    
+    section#tweets-section{
+        div.container{
+            .tweet-card{
+                flex: 0 0 33%;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    
+    section#tweets-section{
+        div.container{
+            .tweet-card{
+                flex: 0 0 55%;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 425px) {
+    
+    section#tweets-section{
+        div.container{
+            .tweet-card{
+                flex: 0 0 100%;
+            }
+        }
+    }
+}

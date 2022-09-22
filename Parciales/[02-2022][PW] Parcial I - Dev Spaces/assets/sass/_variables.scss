@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Handlee&family=Montserrat:ital@1&family=Roboto:wght@300;400&family=Space+Mono&display=swap');
+
+/* Fonts */
+$theme-text-roboto: 'Roboto', sans-serif;
+$theme-text-montserrat: 'Montserrat', sans-serif;
+$theme-text-space-mono: 'Space Mono', monospace;
+$theme-text-handlee: 'Handlee', sans-serif;
+
+/* Colors */
+$color-primary: hsl(213, 58%, 19%);
+$color-primary-light: hsl(213, 33%, 33%);
+$color-accent: hsl(224, 100%, 58%);
+$color-accent-dark: hsl(223, 100%, 40%);
+$color-accent-light: hsl(229, 100%, 73%);
+$color-accent-alt: hsl(166, 37%, 73%);
+$color-accent-alt-dark: hsl(173, 100%, 91%);
+$color-accent-alt-light: hsl(166, 22%, 54%);
+$background-color: white;
+$background-color-alt: hsl(0, 0%, 93%);
+$background-color-alt-dark: hsl(0, 0%, 85%);
+$text-color: hsl(0, 0%, 25%);
+$text-color-alt: white;
+$heading-color: hsl(0, 0%, 0%);

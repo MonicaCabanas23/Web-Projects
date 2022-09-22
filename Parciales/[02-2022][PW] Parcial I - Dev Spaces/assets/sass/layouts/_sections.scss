@@ -1,0 +1,167 @@
+section {
+    @include flex(row);
+    padding: 2rem; 
+}
+
+
+#landing-section {
+    background: $color-primary;
+    width: auto;
+    height: auto;
+
+    >div.side-text {
+        @include flex(column);
+        justify-content: space-around;
+        align-items: flex-start;
+
+        margin: 10px;
+        padding: 2rem; 
+
+        >hr {
+            margin-left: 0%;
+            margin-right: 75%;  
+            background-color: $background-color-alt;
+            width: 25%;
+        }
+
+        >h2{
+            width: 75%;
+            line-height: 150%;
+            font-weight: bold;
+            color: $text-color-alt;
+            font-family: $theme-text-montserrat;
+            font-size: xx-large;
+            align-self: flex-start;
+        }
+
+        >p {
+            color: $text-color-alt;
+            font-family: $theme-text-montserrat;
+            font-size: smaller;
+            text-align: justify;
+            line-height: 200%;
+        }
+
+        >a.light {
+            padding: 0.5rem;
+            
+            color: $text-color-alt;
+
+            font-family: $theme-text-montserrat;
+            font-size: smaller;
+            text-decoration: none;
+
+            border: 2px solid $background-color-alt;
+            align-self: flex-end;
+
+        }
+    }
+
+    > figure.side-image{
+        width: auto;
+        height: auto;
+        min-width: 50vw;
+        align-self: center;
+        
+        >img {
+            width: 100%;
+            height: 100%;
+            max-width: 40rem;
+            border-radius: 2rem 2rem 2rem 0; 
+        }
+    }
+}
+
+#spaces-section {
+    background: $background-color-alt;
+}
+
+#plans-section {
+    background: $background-color-alt-dark;
+    @include flex(column);
+
+    >article.side-text {
+        >hr {
+            margin-left: 0%;
+            margin-right: 75%;  
+            background-color: $background-color-alt;
+            
+        }
+
+        >h2{
+            width: 75%;
+            line-height: 150%;
+            font-weight: bold;
+            color: $heading-color;
+            font-family: $theme-text-montserrat;
+            font-size: xx-large;
+            align-self: flex-start;
+        }
+    }
+    >section.container {
+        @include flex(row);
+    }
+}
+
+#timer-section {
+    background: $color-primary;
+    @include flex(column);
+
+    >article.side-text {
+        >hr {
+            margin-left: 0%;
+            margin-right: 75%;  
+            background-color: $background-color-alt;
+            width: 25%;
+        }
+
+        >h2{
+            width: 75%;
+            line-height: 150%;
+            font-weight: bold;
+            color: $text-color-alt;
+            font-family: $theme-text-montserrat;
+            font-size: xx-large;
+            align-self: flex-start;
+        }
+    }
+
+    >div.timer {
+        @include flex(row);
+    }
+}
+
+#tweets-section {
+    background: $background-color-alt-dark;
+
+    @include flex(column);
+
+    >article.side-text {
+        >hr {
+            margin-left: 0%;
+            margin-right: 75%;  
+            background-color: $background-color-alt;
+            width: 50%;
+        }
+
+        >h2{
+            width: 75%;
+            line-height: 150%;
+            font-weight: bold;
+            color: $heading-color;
+            font-family: $theme-text-montserrat;
+            font-size: xx-large;
+            align-self: flex-start;
+        }
+    }
+
+    >div.container {
+        @include flex(row);
+    }
+}
+
+@media screen and (max-width: 900px){
+    #landing-section {
+        flex-wrap: wrap;
+    }
+}

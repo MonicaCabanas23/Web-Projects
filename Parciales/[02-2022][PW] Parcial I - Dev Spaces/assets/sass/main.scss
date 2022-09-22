@@ -1,0 +1,13 @@
+/* mixins and variables */
+@import "./mixins";
+@import "./variables";
+
+/* Base and reset */
+@import "./base/reset";
+
+@import "./layouts/header";
+@import "./layouts/sections";
+@import "./components/timer";
+@import "./components/form";
+@import "./components/cards";
+@import "./components/cards_scroll"

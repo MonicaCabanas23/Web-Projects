@@ -1,0 +1,199 @@
+#spaces-section {
+    box-sizing: border-box;
+    max-width: 100%;
+
+    div.container{
+        padding: 2rem;
+        background-color: $background-color;
+        @include flex(row, true);
+        flex-wrap: wrap;
+        
+        gap: 3rem;
+        figure > img{
+            height: 3rem;
+            width: 3rem;
+        }
+    
+        margin-top: 2.5rem;
+        
+    }
+    
+    #spaces-title{
+        @include flex(column, true);
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        background-color: $color-accent;
+        h2{
+            font-family: $theme-text-montserrat;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: white;
+            text-align: justify;
+        }
+    }
+    
+    .space-card{
+    
+        background-color: $background-color;
+        box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+        border-radius: .4rem;
+        height: 15rem;
+        width: 17rem;
+        gap: 1.5rem;
+        @include flex(column);
+    
+        h3{
+            font-family: $theme-text-montserrat;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 0;
+            padding: 0;
+            text-align: justify;
+            @include flex(column, true);
+        }
+    
+        p{
+    
+            font-family: $theme-text-roboto;
+            font-size: 0.75rem;
+            font-weight: 300;
+            margin: 0;
+            padding-left: 1.6rem;
+            padding-right: 1.6rem;
+            text-align: justify;
+        }
+    
+        a{
+            font-size: 1rem;
+            font-weight: 400;
+            @include flex(column);
+            align-items: flex-end;
+            padding-right: 1.4rem;
+            padding-bottom: 4rem;
+            color: $color-accent;
+            font-family: $theme-text-space-mono
+        }
+    
+        img{
+            object-fit: contain;
+            position: relative;
+            top: -30%;
+            left: 9%;
+        }
+    
+        p{
+            
+            &::-webkit-scrollbar:vertical{
+                width:10px;
+            }
+            &::-webkit-scrollbar {
+                -webkit-appearance: none;
+            }
+        
+        
+            &::-webkit-scrollbar {
+                -webkit-appearance: none;
+            }
+            
+            &::-webkit-scrollbar:vertical {
+                width:10px;
+            }
+            
+            &::-webkit-scrollbar-button:increment,&::-webkit-scrollbar-button {
+                display: none;
+            } 
+            
+            &::-webkit-scrollbar:horizontal {
+                height: 10px;
+            }
+            
+            &::-webkit-scrollbar-thumb {
+                background-color: #797979;
+                border-radius: 20px;
+                border: 2px solid #f1f2f3;
+            }
+            
+            &::-webkit-scrollbar-track {
+                border-radius: 10px;  
+            }
+        }
+        &:hover{
+            cursor: pointer;
+            transition: all 100ms;
+            transform: scale(1.05);
+        }
+    }
+}
+
+/* Membership plans' cards */
+
+#plans-section {
+    box-sizing: border-box;
+    max-width: 100%;
+
+    >section.container{
+        padding: 2rem;
+        background: $background-color-alt-dark;
+        @include flex(row, true);
+        flex-wrap: wrap;
+    
+        margin-top: 2.5rem;
+
+        >.plan-card{
+    
+            background-color: $background-color;
+            box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+            border-radius: 1rem;
+            
+            height: auto;
+            width: auto;
+            padding: 2rem 3rem 2rem 3rem; 
+
+            @include flex(column);
+            flex-grow: 1;
+            flex-shrink: 1;
+            justify-content: space-around;
+            align-items: center;
+
+            >h3 {
+                font-family: $theme-text-montserrat;
+                font-weight: bold;
+            }
+
+            >span.plan-price {
+                font-size: xx-large;
+                font-weight: bold;
+            }
+
+            >span.plan-price, span.plan-price-desc, ul, a{
+                font-family: $theme-text-roboto;
+                color: $text-color;
+                line-height: 150%;
+                text-align: center;
+            }
+
+            span.plan-price-desc, ul > li{
+                font-size: 13px;
+            }
+
+            >a {
+                color: $color-accent;
+                padding: 1rem;
+                border: 2px solid $color-accent;
+            }
+        }
+
+        >.starred {
+            background-color: $color-accent;
+
+            >h3, span.plan-price, span.plan-price-desc, ul, a {
+                color: $text-color-alt;
+            }
+
+            >a {
+                padding: 1rem;
+                border: 2px solid $text-color-alt;
+            }
+        }
+    }
+}
