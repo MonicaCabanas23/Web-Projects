@@ -54,6 +54,10 @@ section {
             border: 2px solid $background-color-alt;
             align-self: flex-end;
 
+            &:hover{
+                border-radius: 1rem 0;
+            }
+
         }
     }
 

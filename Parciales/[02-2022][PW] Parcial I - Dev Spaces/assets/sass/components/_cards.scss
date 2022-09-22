@@ -180,6 +180,9 @@
                 color: $color-accent;
                 padding: 1rem;
                 border: 2px solid $color-accent;
+                &:hover{
+                    border-radius: 1rem 0;
+                }
             }
         }
 

@@ -38,6 +38,9 @@ div#join-us-form {
             background-color: $color-primary;
             border: 1px solid $background-color-alt;
             color: $text-color-alt;
+            &:hover{
+                border-radius: 1rem 0;
+            }
         }
     }
 }

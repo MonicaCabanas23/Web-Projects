@@ -8,7 +8,7 @@ section#tweets-section{
         overflow-x: scroll;
         overflow-y: hidden;
         position: relative;
-        .tweet-card{
+        article.tweet-card{
 
             box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6);
             @include flex(column);
@@ -76,7 +76,12 @@ section#tweets-section{
                         font-weight: 100;
                     }
                 }
-            }
+            }      
+            &:hover{
+                cursor: pointer;
+                transition: all 100ms;
+                transform: scale(1.05);
+            }      
         }
         
         &::-webkit-scrollbar {
