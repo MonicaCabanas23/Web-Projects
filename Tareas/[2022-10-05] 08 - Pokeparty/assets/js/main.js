@@ -4,7 +4,7 @@ let pokemons = [];
 //Declaracion de variables visuales
 let pokeForm = null;
 let pokeParty = null;
-let pokeCard = null; 
+let pokeCards = null; 
 
 //bind views
 const bindElements = () => {
@@ -20,7 +20,7 @@ const setFormListener = () => {
     // Json de todos los campos de un pokemon
     const data = new FormData(pokeForm);
 
-    /* const _pokemon = {
+    const _pokemon = {
       index: data.get("index"),
       name: data.get("name"),
       sprite: data.get("sprite"),
@@ -33,19 +33,17 @@ const setFormListener = () => {
       def: data.get("def"),
       spa: data.get("spa"),
       spd: data.get("spd")
-    } */
+    }
 
     // Arreglo de pokemones
-    const _pokemon = {};
+    //const _pokemon = {};
     let hasErrors = false;
 
     // Recorrer el json de todos los datos de un pokemon
-    data.forEach((value,key) => {
+    data.forEach((value) => {
       if(!value) {
         hasErrors = true;
       }
-
-      _pokemon[key] = value;
     })
 
     if(hasErrors) {
@@ -82,7 +80,7 @@ const deletePokemon = (index) => {
 
 const createPokemonCard = (poke) => {
   return `
-<article data-index=${poke.index}>
+<article data-index=${poke.index} class="card ${poke.type_1}">
   <figure class="trash-icon" id="trash-${poke.index}" onclick="deletePokemon(${poke.index})">
     <span class="material-symbols-outlined">
       delete
@@ -139,6 +137,19 @@ const createPokemonCard = (poke) => {
 const renderPokemons = () => {
   const _pokeCards = pokemons.map(poke => createPokemonCard(poke));
   pokeParty.innerHTML = _pokeCards.join("\n")
+  changeColor();
+}
+
+const changeColor = () => {
+  // Obtener todas las cartas que se encuentren en la página
+  pokeCards = document.querySelectorAll("#pokemon-party-section > article.card");
+
+  pokeCards.forEach(card => {
+    let text = card.getAttribute("class");
+    let type = text.substring(5); 
+    color = getColorFromType(type);
+    card.style.backgroundColor = color;
+  });
 }
 
 //Main function
@@ -148,3 +159,32 @@ const Main = () => {
 }
 
 window.onload = Main;
+
+const getColorFromType = (type) => {
+  let _colors = {
+    "normal": "#212121",
+    "fighting": "#c62828",
+    "flying": "#0277bd",
+    "poison": "#6a1b9a",
+    "ground": "#3e2723",
+    "rock": "#616161",
+    "bug": "#827717",
+    "ghost": "#12005e",
+    "steel": "#37474f",
+    "fire": "#bf360c",
+    "water": "#1a237e",
+    "grass": "#1b5e20",
+    "electric": "#fbc02d",
+    "psychic": "#c2185b",
+    "ice": "#4fc3f7",
+    "dragon": "#0d47a1",
+    "dark": "#000000",
+    "fairy": "#9e00c5",
+  }
+
+  for (key in _colors){
+    if (key == type){
+      return _colors[key];
+    }
+  }
+}
