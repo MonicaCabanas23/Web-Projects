@@ -59,14 +59,18 @@ const divPromise = (a, b) => {
 
         console.log("Imprimiendo con forEach"); 
 
-        numbersArr.forEach((element) => {
+        numbersArr.forEach(async(element) => {
             try {
-                acc = acc/element; 
-                console.log(acc); 
+              acc = await divAsync(acc, element);
+              console.log(`El resultado es: ${acc}`); 
             } catch (error) {
                 console.error(error.message);
               }
         }); 
   }
+
+  /* El resultado al utilizar un forEach es diferente si utilizamos un bucle for normal
+  ya que un forEach espera procesos síncronos y no esperará por procesos asíncronos, y las promesas
+  al ser un proceso asíncrono no serán 'esperadas' por el forEach, siendo ejecutadas en último lugar */
   
   main();
