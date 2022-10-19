@@ -1,5 +1,7 @@
 //Declaracion de variables logica
+// "https://pokeapi.co/api/v2/pokemon?limit=151&offset=0"
 let pokemons = [];
+let results = [];
 
 //Declaracion de variables visuales
 let pokeForm = null;
@@ -12,12 +14,32 @@ const bindElements = () => {
   pokeParty = document.querySelector("#pokemon-party-section");
 }
 
+// Fetch first 151 pokemons information
+const fetchResults = async () => {
+  let _data = null;
+  let _dataResult = [];
+  try {
+    const response = await fetch ("https://pokeapi.co/api/v2/pokemon?limit=151");
+    _data = await response.json();
+
+    if (response.ok){
+      for (i in _data){
+        _dataResult.push(_data[i]);
+      }
+    }
+  } catch(error) {
+    console.error(error);
+  } finally {
+    return _dataResult[3];
+  }
+}
+
 // Fetch pokemon information
-const fetchPokeInfo = async (identifier) => {
+const fetchPokeInfo = async (url) => {
   let _data = null;
   let data = null
   try {
-    let response = await fetch(`https://pokeapi.co/api/v2/pokemon/${identifier}/`, {});
+    let response = await fetch(url, {});
     // Getting the json object
     if (response.ok){
       _data = await response.json();
@@ -60,41 +82,25 @@ const castPokeData = (data) => {
   }
 }
 
+// Get the 151 pokemons and save them in the 'results' array
+const getPokemons = async () => {
+  let _pokemon;
+  results = await fetchResults();
+
+  results.forEach(async item => {
+    _pokemon = await fetchPokeInfo(item.url);
+    pokemons.push(_pokemon);
+  })
+  
+  // Renderiza la nueva carta del pokemon en la pantalla
+  renderPokemons();
+}
+
 const setFormListener = () => {
   pokeForm.addEventListener("submit", async e => {
     // Evita que ocurra el evento por defecto
     e.preventDefault();
-
-    // Obtain identifier from the form
-    const data = new FormData(pokeForm);
-    const identifier = data.get("identifier");
-
-    let _pokemon = {};
-
-    // Verify that the identifier section is not empty
-    let hasErrors = false;
-    data.forEach((value) => {
-      if(!value) {
-        hasErrors = true;
-      }
-    })
-
-    if(hasErrors) {
-      alert("Se encontraron errores");
-      return;
-    }
-
-    // Obtain data from the API
-    _pokemon = await fetchPokeInfo(identifier);
-    console.log(_pokemon);
-
-    //pokemons = [...pokemons, _pokemon];
-    // Agrega el nuevo pokemon a la variable lógica de pokemons
-    pokemons.unshift(_pokemon);
-    // Renderiza la nueva carta del pokemon en la pantalla
-    renderPokemons();
-    // Limpiar el formulario
-    pokeForm.reset();
+    getPokemons();
   });
 }
 
@@ -117,6 +123,7 @@ const deletePokemon = (identifier) => {
 
 const createPokemonCard = (poke) => {
   const type = poke.types[0];
+  console.log("Eestoy creando");
   return `
 <article data-index=${poke.identifier} class="card ${type}">
   <figure class="trash-icon" id="trash-${poke.identifier}" onclick="deletePokemon(${poke.identifier})">
@@ -173,7 +180,9 @@ const createPokemonCard = (poke) => {
 }
 
 const renderPokemons = () => {
+  console.log("Entre");
   const _pokeCards = pokemons.map(poke => createPokemonCard(poke));
+  console.log(pokemons);
   pokeParty.innerHTML = _pokeCards.join("\n")
   changeColor();
 }
