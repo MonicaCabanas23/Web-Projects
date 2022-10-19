@@ -12,34 +12,67 @@ const bindElements = () => {
   pokeParty = document.querySelector("#pokemon-party-section");
 }
 
+// Fetch pokemon information
+const fetchPokeInfo = async (identifier) => {
+  let _data = null;
+  let data = null
+  try {
+    let response = await fetch(`https://pokeapi.co/api/v2/pokemon/${identifier}/`, {});
+    // Getting the json object
+    if (response.ok){
+      _data = await response.json();
+      data = castPokeData(_data);
+    }
+  } catch(error){
+    console.error(error);
+  } finally {
+    return data;
+  }
+}
+
+// Normalize stat names
+const normalizeStats = (name) => {
+  const _names = {
+    "attack": "atk",
+    "defense": "def",
+    "special-attack": "spa",
+    "special-defense": "spd"
+  }
+
+  return _names[name] || "";
+}
+
+// Cast pokemon information
+const castPokeData = (data) => {
+  return {
+    identifier: data.id,
+    name: data.name,
+    sprite: data.sprites.front_default,
+    height: data.height,
+    weight: data.weight,
+    types: data.types.map(type => type.type.name),
+    stats: data.stats.reduce((result, stat) => {
+      return {
+        ...result, 
+        [normalizeStats(stat.stat.name)]: stat.base_stat,
+      }
+    },{}),
+  }
+}
+
 const setFormListener = () => {
-  pokeForm.addEventListener("submit", e => {
+  pokeForm.addEventListener("submit", async e => {
     // Evita que ocurra el evento por defecto
     e.preventDefault();
 
-    // Json de todos los campos de un pokemon
+    // Obtain identifier from the form
     const data = new FormData(pokeForm);
+    const identifier = data.get("identifier");
 
-    const _pokemon = {
-      index: data.get("index"),
-      name: data.get("name"),
-      sprite: data.get("sprite"),
-      height: data.get("height"),
-      weight: data.get("weight"),
-      type_1: data.get("type-1"),
-      type_2: data.get("type-2"),
-      hp: data.get("hp"),
-      atk: data.get("atk"),
-      def: data.get("def"),
-      spa: data.get("spa"),
-      spd: data.get("spd")
-    }
+    let _pokemon = {};
 
-    // Arreglo de pokemones
-    //const _pokemon = {};
+    // Verify that the identifier section is not empty
     let hasErrors = false;
-
-    // Recorrer el json de todos los datos de un pokemon
     data.forEach((value) => {
       if(!value) {
         hasErrors = true;
@@ -51,6 +84,10 @@ const setFormListener = () => {
       return;
     }
 
+    // Obtain data from the API
+    _pokemon = await fetchPokeInfo(identifier);
+    console.log(_pokemon);
+
     //pokemons = [...pokemons, _pokemon];
     // Agrega el nuevo pokemon a la variable lógica de pokemons
     pokemons.unshift(_pokemon);
@@ -61,12 +98,12 @@ const setFormListener = () => {
   });
 }
 
-const deletePokemon = (index) => {
+const deletePokemon = (identifier) => {
   let _target; 
 
-  // Recorrer el arreglo para poder encontrar el pokemon con index recibido
+  // Recorrer el arreglo para poder encontrar el pokemon con identifier recibido
   for (var i = 0; i < pokemons.length; i++){ 
-    if (pokemons[i].index == index) {
+    if (pokemons[i].identifier == identifier) {
       _target = i;
       break;
     } 
@@ -79,9 +116,10 @@ const deletePokemon = (index) => {
 }
 
 const createPokemonCard = (poke) => {
+  const type = poke.types[0];
   return `
-<article data-index=${poke.index} class="card ${poke.type_1}">
-  <figure class="trash-icon" id="trash-${poke.index}" onclick="deletePokemon(${poke.index})">
+<article data-index=${poke.identifier} class="card ${type}">
+  <figure class="trash-icon" id="trash-${poke.identifier}" onclick="deletePokemon(${poke.identifier})">
     <span class="material-symbols-outlined">
       delete
       </span>
@@ -91,7 +129,7 @@ const createPokemonCard = (poke) => {
   </figure>
   <div class="info">
     <h4> ${poke.name} </h4>
-    <p> # ${poke.index} </p>
+    <p> # ${poke.identifier} </p>
     <p> Altura: ${poke.height} </p>
     <p> Peso: ${poke.weight} </p>
   </div>
@@ -100,32 +138,32 @@ const createPokemonCard = (poke) => {
     <div class="stat">
       <p> HP: </p>
       <div class="bar">
-        <div style="width: ${(poke.hp/255)*100}%;"></div>
+        <div style="width: ${poke.stats.hp}%;"></div>
       </div>
     </div>
     
     <div class="stat">
       <p> ATK: </p>
       <div class="bar">
-        <div style="width: ${(poke.atk/255)*100}%;"></div>
+        <div style="width: ${poke.stats.atk}%;"></div>
       </div>
     </div>
     <div class="stat">
       <p> DEF: </p>
       <div class="bar">
-        <div style="width: ${(poke.def/255)*100}%;"></div>
+        <div style="width: ${poke.stats.def}%;"></div>
       </div>
     </div>
     <div class="stat">
       <p> SPA: </p>
       <div class="bar">
-        <div style="width: ${(poke.spa/255)*100}%;"></div>
+        <div style="width: ${poke.stats.spa}%;"></div>
       </div>
     </div>
     <div class="stat">
       <p>SPD: </p>
       <div class="bar">
-        <div style="width: ${(poke.spd/255)*100}%;"></div>
+        <div style="width: ${poke.stats.spd}%;"></div>
       </div>
     </div>
     
@@ -151,14 +189,6 @@ const changeColor = () => {
     card.style.backgroundColor = color;
   });
 }
-
-//Main function
-const Main = () => {
-  bindElements();
-  setFormListener();
-}
-
-window.onload = Main;
 
 const getColorFromType = (type) => {
   let _colors = {
@@ -188,3 +218,11 @@ const getColorFromType = (type) => {
     }
   }
 }
+
+//Main function
+const Main = () => {
+  bindElements();
+  setFormListener();
+}
+
+window.onload = Main;
