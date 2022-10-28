@@ -91,36 +91,24 @@ const getPokemons = async () => {
     results = await fetchResults();
 
     // Get pokemon info for each item
-    results.forEach(async item => {
-      try {
-        _pokemon = await fetchPokeInfo(item.url);
-        pokemons.push(_pokemon)
-      } catch(error) {
-        console.error(error)
-      }
-    })  
+    for (var i = 0; i < 151; i++){
+      _pokemon = await fetchPokeInfo(results[i].url)
+      pokemons.push(_pokemon);
+    }
+
   } catch(error) {
     console.error(error);
   } 
 }
 
-const deletePokemon = (identifier) => {
-  let _target; 
-
-  // Recorrer el arreglo para poder encontrar el pokemon con identifier recibido
-  for (var i = 0; i < pokemons.length; i++){ 
-    if (pokemons[i].identifier == identifier) {
-      _target = i;
-      break;
-    } 
-  }
-  
-  // Eliminar pokemon encontrado del arreglo de pokemons
-  pokemons.splice(_target,1);
-  // Volver a renderizar las cartas faltantes
-  renderPokemons(); 
+// Call for getting the pokemons and wait for the response to render cards
+async function wrapper() {
+  await getPokemons(); // se espera que acabe el get de datos y luego se sigue
+  console.log(pokemons)
+  renderPokemons();
 }
 
+// Create the pokemon's card element
 const createPokemonCard = (poke) => {
   const type = poke.types[0];
   console.log("Estoy creando");
@@ -179,14 +167,14 @@ const createPokemonCard = (poke) => {
   `;
 }
 
+// Render the pokemon's cards in the DOM
 const renderPokemons = () => {
-  pokeParty.innerHTML = "";
-  pokemons.forEach(poke => {
-    pokeParty.appendChild(createPokemonCard(poke));
-  });
+  const _pokeCards = pokemons.map(poke => createPokemonCard(poke));
+  pokeParty.innerHTML = _pokeCards.join("\n")
   changeColor();
 }
 
+// Change the pokemon's card depending on the first type
 const changeColor = () => {
   // Obtener todas las cartas que se encuentren en la página
   pokeCards = document.querySelectorAll("#pokemon-party-section > article.card");
@@ -228,15 +216,27 @@ const getColorFromType = (type) => {
   }
 }
 
-async function init() {
-  await getPokemons(); // se espera que acabe el get de datos y luego se sigue
-  renderPokemons();
+const deletePokemon = (identifier) => {
+  let _target; 
+
+  // Recorrer el arreglo para poder encontrar el pokemon con identifier recibido
+  for (var i = 0; i < pokemons.length; i++){ 
+    if (pokemons[i].identifier == identifier) {
+      _target = i;
+      break;
+    } 
+  }
+  
+  // Eliminar pokemon encontrado del arreglo de pokemons
+  pokemons.splice(_target,1);
+  // Volver a renderizar las cartas faltantes
+  renderPokemons(); 
 }
 
 //Main function
 const Main = async () => {
   bindElements();
-  init();
+  wrapper();
 }
 
 window.onload = Main;
