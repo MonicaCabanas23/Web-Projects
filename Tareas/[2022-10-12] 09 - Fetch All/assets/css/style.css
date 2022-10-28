@@ -201,6 +201,8 @@ main #pokemon-form {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  cursor: pointer;
 }
 
 .material-symbols-outlined {
