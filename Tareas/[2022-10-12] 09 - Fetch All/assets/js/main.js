@@ -1,7 +1,8 @@
 //Declaracion de variables logica
 // "https://pokeapi.co/api/v2/pokemon?limit=151&offset=0"
-let pokemons = [];
 let results = [];
+let pokemons = [];
+let testNumber = 0;
 
 //Declaracion de variables visuales
 let pokeForm = null;
@@ -39,7 +40,7 @@ const fetchPokeInfo = async (url) => {
   let _data = null;
   let data = null
   try {
-    let response = await fetch(url, {});
+    let response = await fetch(`${url}`, {});
     // Getting the json object
     if (response.ok){
       _data = await response.json();
@@ -85,23 +86,22 @@ const castPokeData = (data) => {
 // Get the 151 pokemons and save them in the 'results' array
 const getPokemons = async () => {
   let _pokemon;
-  results = await fetchResults();
 
-  results.forEach(async item => {
-    _pokemon = await fetchPokeInfo(item.url);
-    pokemons.push(_pokemon);
-  })
-  
-  // Renderiza la nueva carta del pokemon en la pantalla
-  renderPokemons();
-}
+  try {
+    results = await fetchResults();
 
-const setFormListener = () => {
-  pokeForm.addEventListener("submit", async e => {
-    // Evita que ocurra el evento por defecto
-    e.preventDefault();
-    getPokemons();
-  });
+    // Get pokemon info for each item
+    results.forEach(async item => {
+      try {
+        _pokemon = await fetchPokeInfo(item.url);
+        pokemons.push(_pokemon)
+      } catch(error) {
+        console.error(error)
+      }
+    })  
+  } catch(error) {
+    console.error(error);
+  } 
 }
 
 const deletePokemon = (identifier) => {
@@ -123,7 +123,7 @@ const deletePokemon = (identifier) => {
 
 const createPokemonCard = (poke) => {
   const type = poke.types[0];
-  console.log("Eestoy creando");
+  console.log("Estoy creando");
   return `
 <article data-index=${poke.identifier} class="card ${type}">
   <figure class="trash-icon" id="trash-${poke.identifier}" onclick="deletePokemon(${poke.identifier})">
@@ -180,10 +180,10 @@ const createPokemonCard = (poke) => {
 }
 
 const renderPokemons = () => {
-  console.log("Entre");
-  const _pokeCards = pokemons.map(poke => createPokemonCard(poke));
-  console.log(pokemons);
-  pokeParty.innerHTML = _pokeCards.join("\n")
+  pokeParty.innerHTML = "";
+  pokemons.forEach(poke => {
+    pokeParty.appendChild(createPokemonCard(poke));
+  });
   changeColor();
 }
 
@@ -228,10 +228,15 @@ const getColorFromType = (type) => {
   }
 }
 
+async function init() {
+  await getPokemons(); // se espera que acabe el get de datos y luego se sigue
+  renderPokemons();
+}
+
 //Main function
-const Main = () => {
+const Main = async () => {
   bindElements();
-  setFormListener();
+  init();
 }
 
 window.onload = Main;
