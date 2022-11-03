@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import "./Container.css";
 import FormContainer from "./FormContainer/FormContainer";
 import CardContainer from "./CardContainer/CardContainer";
+import swal from 'sweetalert';
 
 // Retornando el contenedor
 const Container = () => {
@@ -14,6 +15,7 @@ const Container = () => {
 
     const addNote = (note) => {
         if (note.length < 1) {
+            swal("No puedes agregar una nota vacía");
             if (showAlert) {
                 return;
             }
@@ -24,7 +26,6 @@ const Container = () => {
             }, 4000);
             return;
         }
-
         // Obtener notas del localStorage
         const notes = JSON.parse(localStorage.getItem("notes")) || [];
         const noteObj = {
