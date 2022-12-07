@@ -1,0 +1,39 @@
+@mixin flex ($dir: column, $centered: false){
+    display: flex;
+    flex-direction: $dir;
+    gap: 1rem; 
+
+    @if $centered {
+        justify-content: center;
+        align-items: center; 
+    }
+}
+
+@mixin grid ($columns: 12, $rows: 1, $centered: false){
+    display: grid;
+
+    grid-template-columns: repeat($columns, 1fr);
+    grid-template-rows: repeat($rows, 1fr); 
+
+    @if $centered {
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@mixin btn-style ($first, $second){
+    margin: 3px; 
+
+    background-color: $accent-color;
+
+    border-radius: $first $second;
+    border: solid $accent-color;
+
+    color: $light-color;
+    font-family: $theme-text-montserrat;
+    font-size: x-small;
+}
+
+@mixin transform-hover (){
+    transform:scale(1.1);
+}

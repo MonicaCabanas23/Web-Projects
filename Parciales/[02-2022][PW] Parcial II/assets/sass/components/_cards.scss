@@ -1,0 +1,57 @@
+figure{
+    width: 15rem;
+    height: 20rem;
+    background-color: white;
+    transition: 0.5s;
+
+    overflow: hidden;
+    position: relative;
+
+    &:hover{
+        @include transform-hover();
+
+        >.modal-container {
+            visibility: visible;
+            opacity: 1;
+
+            >modal h3 {
+                opacity: 100%;
+            }
+        }
+        >.modal-container-deck {
+            visibility: visible;
+            opacity: 1;
+        
+            >.modal-deck h3 {
+                opacity: 100%;
+            }
+        }
+    }
+    &:focus{
+        @include transform-hover();
+
+        >.modal-container {
+            visibility: visible;
+            opacity: 1;
+
+            >modal h3 {
+                opacity: 100%;
+            }
+        }
+        >.modal-container-deck {
+            visibility: visible;
+            opacity: 1;
+        
+            >.modal-deck h3 {
+                opacity: 100%;
+            }
+        }
+    }
+
+    >img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+}
+

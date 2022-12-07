@@ -1,0 +1,126 @@
+.modal-container {
+    display: none;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 1rem;
+    visibility: hidden;
+    opacity: 0;
+    
+    .modal {
+        @include flex(column);
+        gap: 5px;
+        justify-content: space-between;
+        align-items: center;
+
+        padding: 2rem;
+        width: 100%;
+        height: 100%;
+
+        .information {
+            width: 100%;
+
+            >h3 {
+                color: $light-color;
+                text-align: center;
+                font-family: $theme-text-space-mono;
+                font-size: small;
+            }
+        }
+
+        >button {
+            width: 40px;
+            height: 40px;
+
+            background-color: green;
+
+            font-family: $theme-text-space-mono;
+            font-size: x-large;
+            color: $light-color;
+
+            border: 0ch;
+            border-radius: 5px;
+
+            &:hover{
+                background-color: #00bb2d;
+            }
+        }
+
+        >h3 {
+            font-size: small;
+            font-family: $theme-text-space-mono;
+            color: $light-color;
+            text-align: center;
+        }
+    }
+}
+
+
+.modal-container-deck {
+    display: none;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 1rem;
+    visibility: hidden;
+    opacity: 0;
+    
+    .modal-deck {
+        @include flex(column);
+        gap: 5px;
+        justify-content: space-between;
+        align-items: center;
+    
+        padding: 2rem;
+        width: 100%;
+        height: 100%;
+    
+        .information {
+            width: 100%;
+    
+            >h3 {
+                color: $light-color;
+                text-align: center;
+                font-family: $theme-text-space-mono;
+                font-size: small;
+            }
+        }
+    
+        >button {
+            width: 40px;
+            height: 40px;
+    
+            background-color: $accent-color;
+    
+            font-family: $theme-text-space-mono;
+            font-size: x-large;
+            color: $light-color;
+    
+            border: 0ch;
+            border-radius: 5px;
+    
+            &:hover{
+                background-color: #eb636b;
+            }
+        }
+    
+        >h3 {
+            font-size: small;
+            font-family: $theme-text-space-mono;
+            color: $light-color;
+            text-align: center;
+        }
+    }
+}
